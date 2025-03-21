@@ -4,3 +4,10 @@ img.carousel-img {
 .logo-img{
     width: 70px;
 }
+.bg-color-footer{
+    background-color: #588806;
+}
+.link-nav{
+    text-decoration: none !important;
+    color: black;
+}
