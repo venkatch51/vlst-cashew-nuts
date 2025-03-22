@@ -6,11 +6,10 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
-import cashewCardImg from '../images/cashew-card-img.jpg';
+import cashewCardImg from "../images/cashew-card-img.jpg";
 
 const HomePage = () => {
-  const vistile = 3;
-
+  
   return (
     <div className="home-page">
       <div className="carousel-section-container">
@@ -18,23 +17,23 @@ const HomePage = () => {
           <Carousel.Item>
             <img className="carousel-img" src={cashewImage} />
             <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <h3>Quality Cashew Nuts Sourced from Trusted Farmers</h3>
+              <p>Our business is committed to supporting local communities while offering premium nuts to our consumers.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img className="carousel-img" src={cashewImage} />
             <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>Our Commitment to Quality</h3>
+              <p>Our cashew nuts are carefully selected, processed, and packaged to retain their rich flavor and nutritional value.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img className="carousel-img" src={cashewImage} />
             <Carousel.Caption>
-              <h3>Third slide label</h3>
+              <h3>B2B & B2C Options</h3>
               <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              Whether you are a business or an individual, we offer flexible purchasing options.
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -85,7 +84,9 @@ const HomePage = () => {
           </Row>
         </Container>
       </div>
-      <div className="section-three"></div>
+      <div className="section-three p-2">
+        
+      </div>
     </div>
   );
 };
