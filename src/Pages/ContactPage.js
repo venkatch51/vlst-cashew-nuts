@@ -8,27 +8,17 @@ const ContactPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [formdata, setFormdata] = useState({});
-  const onSubmit = (data) => {
-    setFormdata((prevState) => ({
-      ...prevState,
-      ...data,
-    }));
+  
+  const [formdata, setFormdata] = useState([]);
+ 
+  const onSubmit = (data) => {  
+    setFormdata([data]);
+    console.log(errors);
+    
   };
-  const formContentVal = () => {
-    {formdata.map((x) => {
-      return (
-        <>
-          <h3>{x.FullName}</h3>
-          <p>{x.Email}</p>
-          <p>{x.MobileNumber}</p>
-        </>
-      );
-    })}
-  }
   return (
     <div className="form-section">
-      <h3 className="container text-primary">Please Contact to Know More!!</h3>
+      <h3 className="m-auto text-primary">Please Contact to Know More!!</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
@@ -68,9 +58,6 @@ const ContactPage = () => {
 
         <input type="submit" />
       </form>
-      <div className="formstate">
-        {formdata.length > 0 ? formContentVal() : <p className="text-light">Form Not Submitted</p>}
-      </div>
     </div>
   );
 };

@@ -6,20 +6,24 @@ import logoImg from "../images/logo.png";
 import { useTradersContext } from "../context/TradersContext";
 
 const Footer = () => {
-  const { details } = useTradersContext();
+  const { details, loading, error } = useTradersContext();
+
+  if (loading) return <p>Loading...</p>; // Loading state
+  if (error) return <p>Error: {error}</p>; // Error state
+
   return (
     <footer className="bg-color-footer p-5">
       <Container className="text-light">
         <Row>
           <Col>
             <h4>VLST Inc</h4>
-            <img src={logoImg} style={{ width: 50 }} />
+            <img src={logoImg} style={{ width: 50 }} alt="VLST Logo" />
           </Col>
         </Row>
         <Row>
           <Col>
             <p className="quality-nuts">
-              We make sure your get farm fresh quality produce within the
+              We make sure you get farm fresh quality produce within the
               shortest time and considering cost reduction through efficiency
               and use of modern technology. You are our top priority.
             </p>
@@ -35,20 +39,24 @@ const Footer = () => {
           <Col>
             <div className="contact-info">
               <h4>Contact Info</h4>
-              {details.map((owner) => {
-                return (
-                  <div className="customer-data container p-3">
+              {details.length > 0 ? (
+                details.map((owner, index) => (
+                  <div key={index} className="customer-data container p-3">
                     <h5 className="prop-name">Prop Name: {owner.propName}</h5>
                     <h5 className="company-name">
-                      company Name: {owner.companyName}
+                      Company Name: {owner.companyName}
                     </h5>
                     <h5 className="gstin">GSTIN: {owner.GSTIN}</h5>
-                    <a className="text-light" href={owner.website}>Link: {owner.website}</a>
-                    <p className="gmail">gmail: {owner.gmail}</p>
-                    <p className="addres">address: {owner.address}</p>
+                    <a className="text-light" href={owner.website}>
+                      Link: {owner.website}
+                    </a>
+                    <p className="gmail">Gmail: {owner.gmail}</p>
+                    <p className="address">Address: {owner.address}</p>
                   </div>
-                );
-              })}
+                ))
+              ) : (
+                <p>No contact details available.</p>
+              )}
             </div>
           </Col>
         </Row>

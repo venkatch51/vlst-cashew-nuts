@@ -1,21 +1,32 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import apiService from "../Services/apiService";
 
 const TradersContext = createContext({});
 
-const details = [
-  {
-    propName:"G.D.S.Sai Prasad",
-    companyName:"venkatalalithasaitraders",
-    GSTIN:"37ATFPG2591JIZH",
-    website:"https://venkatalalithasaitraders.netlify.app/",
-    gmail:"venkatalalithasaitraders@gmail.com",
-    address:"Door No 21-156 Town Road PAYAKARAOPETA, Payakaraopeta(M), Anakapalli Dist, (A.P)."
-  }
-];
-
 export const TradersProvidercontext = (props) => {
-  let values = {
+  const [details, setContactDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch the contact details from the API on component mount
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const data = await apiService();
+        setContactDetails(data); // Set the API response to state
+        setLoading(false);
+      } catch (err) {
+        setError(err.message); // Handle errors
+        setLoading(false);
+      }
+    };
+
+    fetchDetails();
+  }, []); // Empty dependency array ensures this runs once on mount
+  const values = {
     details,
+    loading,
+    error,
   };
   return (
     <TradersContext.Provider value={values}>
