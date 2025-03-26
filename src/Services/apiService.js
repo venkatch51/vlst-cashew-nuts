@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiService = async () => {
-  const apiKey = '$2a$10$h3/JXpfIVLOC7GB8AD6Q0ODcusMSM8oVcIHS8Ohj3pbFX6ehSQsJ.';
+  const apiKey = '$2a$10$aIVhWWWVW8zc9qidWsfl4OTPyg.Qn8O1aEqzHWKJVd5MKqlPcaxLy';
   try {
     const response = await axios.get(
       "https://api.jsonbin.io/v3/b/67dfcdc58561e97a50f12f01",
